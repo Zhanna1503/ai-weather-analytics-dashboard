@@ -59,6 +59,8 @@ def fetch_all_cities(cities: dict) -> pd.DataFrame:
         rows.append(tomorrow)
 
     df = pd.DataFrame(rows)
+    df["temp_max"] = df["temp_max"].round(1).astype(float)
+    df["temp_min"] = df["temp_min"].round(1).astype(float)
     column_order = ["fetched_at", "city", "date", "temp_max", "temp_min", "precipitation_mm", "ai_summary"]
     return df[column_order]
 
